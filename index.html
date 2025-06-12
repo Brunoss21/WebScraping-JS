@@ -63,42 +63,48 @@
   </style>
 </head>
 <body>
-  <h1>Web Scraping no Navegador com JavaScript</h1>
-  <p>Abra o console (F12) e cole o código abaixo na página da <a href="https://pt.wikipedia.org/wiki/Lista_de_presidentes_do_Brasil" target="_blank">Wikipédia</a>:</p>
-  <pre><code>
-const linhas = document.querySelectorAll('.wikitable tbody tr');
-
-linhas.forEach((linha, index)=>{
-
-    if (index % 2 === 0) {
-        linha.style.color="#fff";
-        linha.style.backgroundColor = 'green';
-        linha.style.border="solid #ffffff "
-    } else {
-        linha.style.color="blue";
-        linha.style.border="solid #ffffff "
-        linha.style.backgroundColor = 'yellow';
-    }
-
-    const colunas = linha.querySelectorAll('td');
-    if(colunas.length < 3) return;
-
-    const ordem = colunas[0]?.textContent.trim() || 'N/A';
-    const nome = colunas[1].textContent.trim();
-    const mandato = colunas[3].textContent.trim();
-    const partido = colunas[4].textContent.trim();
-    const vicePres = colunas[5].textContent.trim();
-    const eleicao = colunas[6].textContent.trim();
-
-    console.log(`Ordem: ${ordem}\nPresidente: ${nome}\nMandato: ${mandato}\nPartido: ${partido}\nVice-Presidente: ${vicePres}\nAno Eleição: ${eleicao}`);
-
-});
-
-const links = document.querySelectorAll('.wikitable a');
-
-links.forEach(link => {
-  const texto = link.style.color="blue"
-});
-  </code></pre>
+   <header>🇧🇷 Web Scraping com JavaScript</header>
+    <main>
+      <h1>Extraindo dados da Wikipédia no navegador</h1>
+      <p>Acesse a <a href="https://pt.wikipedia.org/wiki/Lista_de_presidentes_do_Brasil" target="_blank">tabela dos presidentes do Brasil</a>, abra o console do navegador (F12) e cole este código:</p>
+      <pre><code>
+      const linhas = document.querySelectorAll('.wikitable tbody tr');
+      
+      linhas.forEach((linha, index)=>{
+      
+          if (index % 2 === 0) {
+              linha.style.color="#fff";
+              linha.style.backgroundColor = 'green';
+              linha.style.border="solid #ffffff "
+          } else {
+              linha.style.color="blue";
+              linha.style.border="solid #ffffff "
+              linha.style.backgroundColor = 'yellow';
+          }
+      
+          const colunas = linha.querySelectorAll('td');
+          if(colunas.length < 3) return;
+      
+          const ordem = colunas[0]?.textContent.trim() || 'N/A';
+          const nome = colunas[1].textContent.trim();
+          const mandato = colunas[3].textContent.trim();
+          const partido = colunas[4].textContent.trim();
+          const vicePres = colunas[5].textContent.trim();
+          const eleicao = colunas[6].textContent.trim();
+      
+          console.log(`Ordem: ${ordem}\nPresidente: ${nome}\nMandato: ${mandato}\nPartido: ${partido}\nVice-Presidente: ${vicePres}\nAno Eleição: ${eleicao}`);
+      
+      });
+      
+      const links = document.querySelectorAll('.wikitable a');
+      
+      links.forEach(link => {
+        const texto = link.style.color="blue"
+      });
+      </code></pre>
+  </main>
+  <footer>
+    Projeto educativo | Feito com 💚 pelo Brasil
+  </footer>
 </body>
 </html>
