@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Web Scraping com JS</title>
+</head>
+<body>
+  <h1>Web Scraping no Navegador com JavaScript</h1>
+  <p>Abra o console (F12) e cole o código abaixo na página da <a href="https://pt.wikipedia.org/wiki/Lista_de_presidentes_do_Brasil" target="_blank">Wikipédia</a>:</p>
+  <pre><code>
+document.querySelectorAll('.wikitable a').forEach(link => {
+  const span = document.createTextNode(link.textContent);
+  link.parentNode.replaceChild(span, link);
+});
+const linhas = document.querySelectorAll('.wikitable tbody tr');
+linhas.forEach((linha, index) => {
+  if (index === 0) return;
+  const colunas = linha.querySelectorAll('td');
+  if (colunas.length < 3) return;
+  const ordem = colunas[0]?.textContent.trim() || 'N/A';
+  const nome = colunas[1].textContent.trim();
+  const mandato = colunas[3].textContent.trim().replace(/\n+/g, ' ');
+  const partido = colunas[4].textContent.trim();
+  const vicePres = colunas[5].textContent.trim();
+  const eleicao = colunas[6].textContent.trim();
+  console.log(`Ordem: ${ordem}\nPresidente: ${nome}\nMandato: ${mandato}\nPartido: ${partido}\nVice: ${vicePres}\nEleição: ${eleicao}\n`);
+});
+  </code></pre>
+</body>
+</html>
