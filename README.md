@@ -4,7 +4,10 @@ Script simples para extrair dados da tabela de Presidentes do Brasil direto do n
 
 ## 🔗 Página-alvo
 
-[Lista de presidentes do Brasil (Wikipédia)](https://pt.wikipedia.org/wiki/Lista_de_presidentes_do_Brasil)
+[Lista de presidentes do Brasil (Wikipédia)](https://pt.wikipedia.org/wiki/Lista_de_presidentes_do_Brasil
+
+## Hospedado no GitHub Pages
+https://brunoss21.github.io/WebScraping-JS/
 
 ## 🚀 Como usar
 
